@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CyberEye Studios</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta content="CyberEye Studios" property="og:site_name">
+    <meta content="CyberEye Studios" property="og:title">
+    <meta content="http://cybereyestudios.com" property="og:url">
+    <meta content="http://cybereyestudios.com/share.png" property="og:image">
+    <meta content="CyberEye Studios creates mobile apps and software to brighten your day." property="og:description">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+
+    <script>
+        var intro;
+        var introHeight = 0;
+        var logo;
+        var logoWidthSmall = 100;
+        var logoHeightSmall = 50;
+        var logoWidthLarge = 500;
+        var logoHeightLarge = 250;
+        var logoTopSmall = (100 - logoHeightSmall) / 2;
+        var logoLeftSmall = 30;
+        var logoTopLarge = 200;
+        var logoLeftLarge;
+        var header;
+
+        // function DisplayCurrentScroll() {
+        //     var e = document.body;
+        //     var info = document.getElementById("info");
+        //     info.rows[1].cells[4].innerHTML = e.scrollLeft;
+        //     info.rows[2].cells[4].innerHTML = e.scrollTop;
+        // }
+
+        // function DisplayInfo() {
+        //     var e = document.body;
+        //     var info = document.getElementById("info");
+        //     info.rows[1].cells[1].innerHTML = e.scrollWidth;
+        //     info.rows[2].cells[1].innerHTML = e.scrollHeight;
+        //     info.rows[1].cells[2].innerHTML = e.clientWidth;
+        //     info.rows[2].cells[2].innerHTML = e.clientHeight;
+        //     info.rows[1].cells[3].innerHTML = e.scrollWidth - e.clientWidth;
+        //     info.rows[2].cells[3].innerHTML = e.scrollHeight - e.clientHeight;
+
+        //     DisplayCurrentScroll();
+        // }
+
+        window.addEventListener('load', function() {
+            // DisplayInfo()
+            setupIntro();
+            updateIntro();
+        });
+
+        window.addEventListener('scroll', function() {
+            // DisplayInfo();
+            updateIntro();
+        });
+
+        window.addEventListener('resize', function() {
+            // DisplayInfo();
+            setupIntro();
+            updateIntro();
+        })
+
+        function setupIntro() {
+            console.log(document.body.scrollTop);
+            intro = document.getElementById('intro');
+            introHeight = window.innerHeight - 100;
+            intro.style.height = introHeight + 'px';
+
+            logo = document.getElementById('logo');
+
+            logoLeftLarge = (window.innerWidth - logoWidthLarge) / 2;
+
+            header = document.getElementsByTagName('header')[0];
+        }
+
+        function updateIntro() {
+            var scrollPos = document.body.scrollTop;
+            if (scrollPos < introHeight) {
+                var factor = scrollPos / introHeight;
+
+                // horizontal
+                logo.style.width = (logoWidthLarge - (logoWidthLarge - logoWidthSmall) * factor) + 'px';
+                logo.style.left = (logoLeftLarge - (logoLeftLarge - logoLeftSmall) * factor) + 'px';
+
+                // vertical
+                logo.style.height = (logoHeightLarge - (logoHeightLarge - logoHeightSmall) * factor) + 'px';
+                logo.style.top = (logoTopLarge - (logoTopLarge - logoTopSmall) * factor) + 'px';
+
+                // header
+                header.style['background-color'] = 'rgba(20, 40, 60, 1)';
+                header.style['box-shadow'] = 'none';
+
+                // site name
+                if (factor < 0.5) {
+                    intro.getElementsByTagName('h1')[0].style.opacity = 1 - 2 * factor;
+                    header.getElementsByTagName('h1')[0].style.opacity = 0;
+                }
+                else {
+                    intro.getElementsByTagName('h1')[0].style.opacity = 0;
+                    header.getElementsByTagName('h1')[0].style.opacity = (factor - 0.5) * 2;
+                }
+            }
+            else {
+                // horizontal
+                logo.style.width = logoWidthSmall + 'px';
+                logo.style.left = logoLeftSmall + 'px';
+
+                // vertical
+                logo.style.height = logoHeightSmall + 'px';
+                logo.style.top = logoTopSmall + 'px';
+                
+                // header
+                header.style['background-color'] = 'rgba(20, 40, 60, 0.95)';
+                header.style['box-shadow'] = '0 0 6px 0 rgba(0, 0, 0, .4)';
+
+                // site name
+                intro.getElementsByTagName('h1')[0].style.opacity = 0;
+                header.getElementsByTagName('h1')[0].style.opacity = 1;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img id="logo" alt="CyberEye Studios" src="logo.png">
+        <h1>CyberEye Studios</h1>
+        <nav>
+            <a class="scroll" href="#apps">Apps</a>
+            <!-- <a class="scroll" href="#about">About Us</a> -->
+            <a class="scroll" href="#contact">Contact</a>
+        </nav>
+        <!-- <table id="info" border="1px">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Total size</th>
+                    <th>Client size</th>
+                    <th>Max scroll position</th>
+                    <th>Current scroll position</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Horizontal</b></td>
+                    <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td><b>Vertical</b></td>
+                    <td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table> -->
+    </header>
+    <main>
+        <div id="intro">
+            <h1>CyberEye Studios</h1>
+        </div>
+        <section id="apps">
+            <article id="frenzy" class="text-left">
+                <div class="overlay">
+                    <div class="content">
+                        <div>
+                            <h1>Frenzy</h1>
+                            <h2>Are you up for the challenge? Can you survive the Frenzy?</h2>
+                            <p>A highly addictive tilt-to-dodge dots game, Frenzy challenges you to stay alive for as long as you can in two unique game modes, Classic and Survival. See how you stack up against your friends and the world on leaderboards, and get achievements to show your friends that you're the Frenzy Master!</p>
+                            <a href='https://play.google.com/store/apps/details?id=com.cybereyestudios.frenzy&utm_source=cybereyestudios.com&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+                        </div>
+                        <img class="feature" alt="Frenzy Icon" src="frenzy_icon.png"></img>
+                    </div>
+                </div>
+            </article>
+            <!-- <hr> -->
+            <article id="tiphelper" class="text-right">
+                <div class="overlay">
+                    <div class="content">
+                        <div>
+                            <h1>Tip Helper</h1>
+                            <h2>Effortlessly decide, calculate, and split a tip!</h2>
+                            <p>Decide, calculate, and split your tip with ease using Tip Helper. With a streamlined user interface, a large numbers-only keyboard, a help-me-decide what to tip feature, and deep customization, Tip Helper is the best tip calculator available.</p>
+                            <a href='https://play.google.com/store/apps/details?id=com.samuelrabinowitz.tiphelper&utm_source=cybereyestudios.com&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+                        </div>
+                        <img class="feature" alt="Tip Helper Icon" src="tiphelper_icon.png"></img>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!-- <section id="about">
+
+        </section> -->
+        <section id="contact">
+            <h1>Contact</h1>
+            <h2>Samuel Rabinowitz</h2>
+            <a href="mailto:samuel@cybereyestudios.com">samuel@cybereyestudios.com</a>
+        </section>
+    </main>
+    <script src="scroll.min.js"></script>
+</body>
+</html>
