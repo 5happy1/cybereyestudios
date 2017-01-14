@@ -8,25 +8,12 @@
     <meta content="CyberEye Studios" property="og:site_name">
     <meta content="CyberEye Studios" property="og:title">
     <meta content="http://cybereyestudios.com" property="og:url">
-    <meta content="http://cybereyestudios.com/share.png" property="og:image">
+    <!-- <meta content="http://cybereyestudios.com/share.png" property="og:image"> -->
     <meta content="CyberEye Studios creates mobile apps and software to brighten your day." property="og:description">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
     <meta name="apple-mobile-web-app-capable" content="yes" /> -->
 
     <script>
-        var intro;
-        var introHeight = 0;
-        var logo;
-        var logoWidthSmall = 100;
-        var logoHeightSmall = 50;
-        var logoWidthLarge = 500;
-        var logoHeightLarge = 250;
-        var logoTopSmall = (100 - logoHeightSmall) / 2;
-        var logoLeftSmall = 30;
-        var logoTopLarge = 200;
-        var logoLeftLarge;
-        var header;
-
         // function DisplayCurrentScroll() {
         //     var e = document.body;
         //     var info = document.getElementById("info");
@@ -46,6 +33,21 @@
 
         //     DisplayCurrentScroll();
         // }
+
+        var intro;
+        var introHeight = 0;
+        var logo;
+        var logoWidthSmall = 100;
+        var logoHeightSmall = 50;
+        var logoWidthLarge = 500;
+        var logoHeightLarge = 250;
+        var logoTopSmall = (100 - logoHeightSmall) / 2;
+        var logoLeftSmall = 30;
+        var logoTopLarge = 200;
+        var logoLeftLarge;
+        var header;
+        var introTitle;
+        var headerTitle;
 
         window.addEventListener('load', function() {
             // DisplayInfo()
@@ -75,6 +77,9 @@
             logoLeftLarge = (window.innerWidth - logoWidthLarge) / 2;
 
             header = document.getElementsByTagName('header')[0];
+
+            introTitle = intro.getElementsByTagName('h1')[0];
+            headerTitle = header.getElementsByTagName('h1')[0];
         }
 
         function updateIntro() {
@@ -96,12 +101,12 @@
 
                 // site name
                 if (factor < 0.5) {
-                    intro.getElementsByTagName('h1')[0].style.opacity = 1 - 2 * factor;
-                    header.getElementsByTagName('h1')[0].style.opacity = 0;
+                    introTitle.style.opacity = 1 - 2 * factor;
+                    headerTitle.getElementsByTagName('h1')[0].style.opacity = 0;
                 }
                 else {
-                    intro.getElementsByTagName('h1')[0].style.opacity = 0;
-                    header.getElementsByTagName('h1')[0].style.opacity = (factor - 0.5) * 2;
+                    introTitle.style.opacity = 0;
+                    headerTitle.style.opacity = (factor - 0.5) * 2;
                 }
             }
             else {
@@ -118,8 +123,8 @@
                 header.style['box-shadow'] = '0 0 6px 0 rgba(0, 0, 0, .4)';
 
                 // site name
-                intro.getElementsByTagName('h1')[0].style.opacity = 0;
-                header.getElementsByTagName('h1')[0].style.opacity = 1;
+                introTitle.style.opacity = 0;
+                headerTitle.style.opacity = 1;
             }
         }
     </script>
