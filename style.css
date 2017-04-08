@@ -109,6 +109,15 @@ main {
     top: 70%;
 }
 
+#intro h2 {
+    text-align: center;
+    position: relative;
+    top: 70%;
+    color: lightgrey;
+    font-family: 'Roboto Slab', serif;
+    font-style: italic;
+}
+
 /* APPS */
 
 #apps:before {

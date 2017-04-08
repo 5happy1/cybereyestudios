@@ -9,7 +9,7 @@
     <meta content="CyberEye Studios" property="og:title">
     <meta content="http://cybereyestudios.com" property="og:url">
     <!-- <meta content="http://cybereyestudios.com/share.png" property="og:image"> -->
-    <meta content="CyberEye Studios creates mobile apps and software to brighten your day." property="og:description">
+    <meta content="CyberEye Studios makes apps and software to brighten your day." property="og:description">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
     <meta name="apple-mobile-web-app-capable" content="yes" /> -->
 
@@ -47,6 +47,7 @@
         var logoLeftLarge;
         var header;
         var introTitle;
+        var introTagline;
         var headerTitle;
 
         window.addEventListener('load', function() {
@@ -79,6 +80,7 @@
             header = document.getElementsByTagName('header')[0];
 
             introTitle = intro.getElementsByTagName('h1')[0];
+            introTagline = intro.getElementsByTagName('h2')[0];
             headerTitle = header.getElementsByTagName('h1')[0];
         }
 
@@ -101,11 +103,14 @@
 
                 // site name
                 if (factor < 0.5) {
-                    introTitle.style.opacity = 1 - 2 * factor;
+                	var introOpacity = 1 - 2 * factor;
+                    introTitle.style.opacity = introOpacity;
+                    introTagline.style.opacity = introOpacity;
                     headerTitle.style.opacity = 0;
                 }
                 else {
                     introTitle.style.opacity = 0;
+                    introTagline.style.opacity = 0;
                     headerTitle.style.opacity = (factor - 0.5) * 2;
                 }
             }
@@ -124,6 +129,7 @@
 
                 // site name
                 introTitle.style.opacity = 0;
+                introTagline.style.opacity = 1;
                 headerTitle.style.opacity = 1;
             }
         }
@@ -163,6 +169,7 @@
     <main>
         <div id="intro">
             <h1>CyberEye Studios</h1>
+            <h2>Making apps and software to brighten your day!</h2>
         </div>
         <section id="apps">
             <article id="frenzy" class="text-left">
